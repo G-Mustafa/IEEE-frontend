@@ -3,7 +3,7 @@
     const handlers = {
         'logout-btn':function(e) {
             e.preventDefault();
-            fetch('http://localhost:3000/signout',{
+            fetch('https://obscure-cliffs-22622.herokuapp.com/signout',{
                 method:'GET',
                 credentials:"include"
             })
@@ -29,7 +29,7 @@
                 attObj[selects[i].id] = selects[i].value === 'present'?true:false;
             }
 
-            fetch('http://localhost:3000/attendance',{
+            fetch('https://obscure-cliffs-22622.herokuapp.com/attendance',{
                 method: "POST",
                 body: JSON.stringify(attObj),
                 credentials:"include",
@@ -54,7 +54,7 @@
             const name = sanitize(e.target.name.value);
             const password = e.target.password.value;
             if(name && password){
-                fetch('http://localhost:3000/signin',{
+                fetch('https://obscure-cliffs-22622.herokuapp.com/signin',{
                     method: "POST",
                     body: JSON.stringify({name,password}),
                     credentials:"include",
@@ -88,7 +88,7 @@
             if(regex.test(date)){
                 const [,day,month,year] = regex.exec(date);
                 const ms = new Date(year,Number(month)-1,day).valueOf();
-                fetch(`http://localhost:3000/attendance/date?date=${ms}`,{
+                fetch(`https://obscure-cliffs-22622.herokuapp.com/attendance/date?date=${ms}`,{
                     method:'GET',
                     credentials:"include"
                 })
@@ -220,7 +220,7 @@
     }
 
     function initiate() {
-        fetch('http://localhost:3000/attendance',{
+        fetch('https://obscure-cliffs-22622.herokuapp.com/attendance',{
             method: "GET",
             credentials:"include"
         })
