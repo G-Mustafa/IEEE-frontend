@@ -15,6 +15,7 @@
                     removeAllEL();
                     removeAllComponents();
                     loadLoginForm();
+                    showMsg(data.msg);
                 }
             })
             .catch(err => {
@@ -72,6 +73,7 @@
                         data.payload.length?loadAttendanceForm(data.payload):null;
                         loadDateForm();
                         loadLogoutBTN();
+                        showMsg(data.msg);
                     }
                 })
                 .catch(err => {
@@ -227,7 +229,6 @@
         .then(response => response.json())
         .then(data => {
             if(data.err){
-                showMsg(data.msg);
                 loadLoginForm();
             }else{
                 data.payload.length? loadAttendanceForm(data.payload): null;
